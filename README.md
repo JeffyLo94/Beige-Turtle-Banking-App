@@ -1,4 +1,4 @@
-# softwareproject
+# CPSC 362 Software Engineering Project
 
 -Update your Xcode to the latest version
 
