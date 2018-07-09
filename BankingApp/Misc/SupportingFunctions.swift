@@ -62,3 +62,17 @@ extension Formatter {
         return formatter
     }()
 }
+
+
+extension Numeric {   // for Swift 3 use FloatingPoint or Int
+    var currency: String {
+        return Formatter.currency.string(for: self) ?? ""
+    }
+    var currencyUS: String {
+        return Formatter.currencyUS.string(for: self) ?? ""
+    }
+    var currencyBR: String {
+        return Formatter.currencyBR.string(for: self) ?? ""
+    }
+    
+}
