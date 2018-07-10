@@ -6,6 +6,9 @@
 //  Copyright © 2018 brad. All rights reserved.
 //
 
+//Example of picker view
+//https://codewithchris.com/uipickerview-example/
+
 import UIKit
 import Firebase
 import FirebaseDatabase
