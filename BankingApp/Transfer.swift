@@ -61,7 +61,13 @@ class Transfer: UIViewController {
         
         ref.child("transactions").child(userID).queryOrderedByKey().observe(.childAdded, with: {snapshot in
             
-            print("HUSHH")
+          print("Something was changed...")
+            
+//            let snapDict = snapshot.value as? NSDictionary
+//            let balance = snapDict?["account_balance"] as! Double
+            
+            //insert or append in array with struct
+  
             
             
             
