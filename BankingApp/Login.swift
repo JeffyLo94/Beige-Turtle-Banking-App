@@ -21,6 +21,8 @@ class Login: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        hideKeyboardWhenTappedAround()
+        
     }
     
     
@@ -49,9 +51,45 @@ class Login: UIViewController {
                     client.name = snapDict?["name"] as? String ?? ""
                     client.phone = snapDict?["phone"] as? String ?? ""
                     client.email = snapDict?["email"] as? String ?? ""
-                    client.checking = snapDict?["checking"] as! Double
-                    client.saving = snapDict?["savings"] as! Double
                    
+                    
+                    //self.performSegue(withIdentifier: "goMain", sender: nil)
+                    
+                })
+                
+                ref.child("accounts").child(userID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    
+                    
+                    client.number_of_accounts = Int(snapshot.childrenCount)
+                    
+                    for child in snapshot.children.allObjects as! [DataSnapshot] {
+                        //print(child.value)
+                        let dict = child.value as? [String : AnyObject] ?? [:]
+                        //print(dict["account_balance"])
+                        
+                        account.name = dict["account_type"] as! String
+                        account.balance = dict["account_balance"] as! Double
+                        account.available_balance = dict["account_balance"] as! Double
+                        
+                        if(account.name == "Visa Credit"){
+                            
+                            account.name = dict["account_type"] as! String
+                            account.balance = dict["account_balance"] as! Double
+                            account.available_balance = dict["account_balance"] as! Double
+                            account.amount_due = dict["amount_due"] as! Double
+                            account.credit_limit = dict["credit_limit"] as! Double
+                            
+                            
+                        }
+                        
+                        
+                        dataArray.append(accountGlobal(name: account.name,  balance: account.balance, amount_due: account.amount_due, available_balance: account.available_balance, credit_limit: account.credit_limit))
+                        
+                    }
+                    
+                   
+                    
+
                     
                     self.performSegue(withIdentifier: "goMain", sender: nil)
                     

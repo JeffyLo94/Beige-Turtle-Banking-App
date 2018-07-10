@@ -1,0 +1,55 @@
+Bank Application
+
+1.) Authentication
+
+2.) Account Summary
+
+3.) Transfer between checkings and savings
+
+4.) Debit Card/Credit Card Deactivation
+
+5.) Transaction history (Showing transactions between checkings and savings)
+
+6.) Security of Application - (Face and Touch ID)
+
+7.) Display of User Information (name, phone, email..etc)
+
+8.) Sign Out
+
+9.) Bank Database
+
+
+
+
+MISC. SAVE FOR END IF FEATURES NOT APPROVED
+-Pay Bills
+-Close Account
+
+
+                                    //Needs to be done//
+
+-Money Transfers
+   -Recognize Debit and Savings Accounts
+   -Save Variables
+    -print selected picker view data
+
+-Transactions
+    -table view
+    -Firebase listners
+    -if data added refresh table view
+
+-UI Design
+    -Color Scheme
+    -Minor Touches
+    -Maybe Logo Turtle or BT
+    -Navigation icons open source (need work cited)
+
+-Profile
+    -Display name, email, phone
+    -debit/credit card cancelation (using switch)
+    -Sign Out
+
+
+
+
+

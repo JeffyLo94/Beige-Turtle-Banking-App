@@ -22,6 +22,7 @@
 		6F6F651F20EBF3BB0023A647 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F6F651D20EBF3BB0023A647 /* LaunchScreen.storyboard */; };
 		6F6F652A20EBF3BB0023A647 /* BankingAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F652920EBF3BB0023A647 /* BankingAppTests.swift */; };
 		6F6F653520EBF3BB0023A647 /* BankingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6F653420EBF3BB0023A647 /* BankingAppUITests.swift */; };
+		6FA10E3B20F56C670011ABC8 /* FeatureList in Resources */ = {isa = PBXBuildFile; fileRef = 6FA10E3A20F56C670011ABC8 /* FeatureList */; };
 		6FD4762620F3D3A4004E254A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FD4762520F3D3A3004E254A /* GoogleService-Info.plist */; };
 		ED263CCA883B311CEDA1FCDD /* Pods_BankingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2685E8479A9E63EDA32460F3 /* Pods_BankingAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		6F6F653020EBF3BB0023A647 /* BankingAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankingAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F6F653420EBF3BB0023A647 /* BankingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankingAppUITests.swift; sourceTree = "<group>"; };
 		6F6F653620EBF3BB0023A647 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FA10E3A20F56C670011ABC8 /* FeatureList */ = {isa = PBXFileReference; lastKnownFileType = text; path = FeatureList; sourceTree = "<group>"; };
 		6FD4762520F3D3A3004E254A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83B7AE938D3FEC1568FC85B7 /* Pods_BankingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BD71EC494F021BA1AED474D /* Pods-BankingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankingAppTests/Pods-BankingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				6F6F651D20EBF3BB0023A647 /* LaunchScreen.storyboard */,
 				6FD4762520F3D3A3004E254A /* GoogleService-Info.plist */,
 				6F6F652020EBF3BB0023A647 /* Info.plist */,
+				6FA10E3A20F56C670011ABC8 /* FeatureList */,
 			);
 			path = BankingApp;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				6F6F651F20EBF3BB0023A647 /* LaunchScreen.storyboard in Resources */,
 				6FD4762620F3D3A4004E254A /* GoogleService-Info.plist in Resources */,
 				6F6F651C20EBF3BB0023A647 /* Assets.xcassets in Resources */,
+				6FA10E3B20F56C670011ABC8 /* FeatureList in Resources */,
 				6F6F651A20EBF3B90023A647 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

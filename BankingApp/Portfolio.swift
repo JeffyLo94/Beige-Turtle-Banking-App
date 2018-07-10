@@ -52,18 +52,28 @@ class Portfolio: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func setUserData() {
         
         welcomeLabel.text = "Welcome, " + client.name
-        
-        portfolioArray.insert(data(title: "Checking Account", balance: client.checking.currency, title2: "Account Balance"), at: 0)
-        
-        portfolioArray.insert(data(title: "Savings Account", balance: client.saving.currency, title2: "Account Balance"), at: 1)
-        
-        portfolioArray.insert(data(title: "Total Account Value", balance: (client.saving + client.checking).currency, title2: nil), at: 2)
-        
+
+        for (index, element) in dataArray.enumerated() {
+            
+            portfolioArray.insert(data(title: element.name, balance: element.balance.currency, title2: "Account Balance"), at: index)
+            
+            //Set a struct for savings and checking
+            if(element.name == "Checking"){
+                checking.name = element.name
+                checking.balance = element.balance
+                checking.available_balance = element.available_balance
+            }
+            if(element.name == "Savings"){
+                savings.name = element.name
+                savings.balance = element.balance
+                savings.available_balance = element.available_balance
+         
+        }
       
        
     }
     
-   
+    }
 
     
     
@@ -91,7 +101,7 @@ class Portfolio: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
