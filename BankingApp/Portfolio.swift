@@ -36,7 +36,14 @@ class Portfolio: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
+        
+        
        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        setUserData()
+        print("In Portfolio...")
     }
     
     
