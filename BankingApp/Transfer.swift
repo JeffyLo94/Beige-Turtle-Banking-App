@@ -16,6 +16,9 @@ import FirebaseDatabase
 class Transfer: UIViewController {
     
     var ref: DatabaseReference!
+    
+    @IBOutlet weak var amount_Transfer: UITextField!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +33,23 @@ class Transfer: UIViewController {
    
     
 
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func TransferB(_ sender: Any) {
+        print("Button Presses")
+        
+        
+        
+        print(amount_Transfer.text)
+    }
+    
+    
+    
     
     
     func updateAccountValues() {
