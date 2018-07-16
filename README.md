@@ -7,7 +7,7 @@ Professor: Song Choi
 
 Swift implementation of a simple banking app following Software Design principles and processes defined by Professor Choi. For more information, see the Project Documentation file within this project.
 
-##Group Members:
+## Group Members:
 
 Brad Dodds bradleydodds@csu.fullerton.edu
 
