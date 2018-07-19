@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		034A3C630992566F02B51296 /* Pods_BankingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B4FBEA0A3743757D2D78B5 /* Pods_BankingAppUITests.framework */; };
 		4808B29F61001D324E9B72CB /* Pods_BankingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B7AE938D3FEC1568FC85B7 /* Pods_BankingApp.framework */; };
+		56E23952210106DA001FA83B /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E23951210106DA001FA83B /* Transfer.storyboard */; };
 		6F31FEE720F3DD8800BE2B3E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F31FEE620F3DD8800BE2B3E /* User.swift */; };
-		6F5263E920F3D61B0042EA6A /* Portfolio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5263E820F3D61B0042EA6A /* Portfolio.swift */; };
+		6F5263E920F3D61B0042EA6A /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5263E820F3D61B0042EA6A /* Accounts.swift */; };
 		6F5263EB20F3D6360042EA6A /* Transfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5263EA20F3D6360042EA6A /* Transfer.swift */; };
 		6F5263ED20F3D6450042EA6A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5263EC20F3D6450042EA6A /* Profile.swift */; };
 		6F5263EF20F3D6D60042EA6A /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5263EE20F3D6D60042EA6A /* Alerts.swift */; };
@@ -51,9 +52,10 @@
 		1F84299B14593F4DEDD88712 /* Pods-BankingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankingAppUITests/Pods-BankingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2685E8479A9E63EDA32460F3 /* Pods_BankingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		433FFAB1EDD07457E1E670A1 /* Pods-BankingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BankingAppUITests/Pods-BankingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		56E23951210106DA001FA83B /* Transfer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
 		69CADE791EB189F803617134 /* Pods-BankingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankingApp/Pods-BankingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6F31FEE620F3DD8800BE2B3E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		6F5263E820F3D61B0042EA6A /* Portfolio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Portfolio.swift; sourceTree = "<group>"; };
+		6F5263E820F3D61B0042EA6A /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
 		6F5263EA20F3D6360042EA6A /* Transfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfer.swift; sourceTree = "<group>"; };
 		6F5263EC20F3D6450042EA6A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		6F5263EE20F3D6D60042EA6A /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
@@ -109,6 +111,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		56E23953210106EE001FA83B /* Transfer */ = {
+			isa = PBXGroup;
+			children = (
+				6F5263EA20F3D6360042EA6A /* Transfer.swift */,
+				56E23951210106DA001FA83B /* Transfer.storyboard */,
+			);
+			name = Transfer;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		6F6749D320F3C67900CB9A32 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +134,7 @@
 		6F6F650820EBF3B90023A647 = {
 			isa = PBXGroup;
 			children = (
+				56E23953210106EE001FA83B /* Transfer */,
 				6F6F651320EBF3B90023A647 /* BankingApp */,
 				6F6F652820EBF3BB0023A647 /* BankingAppTests */,
 				6F6F653320EBF3BB0023A647 /* BankingAppUITests */,
@@ -147,8 +160,7 @@
 				6F6F651420EBF3B90023A647 /* AppDelegate.swift */,
 				6F6F651620EBF3B90023A647 /* Login.swift */,
 				6F6D3FE52100FF170037B868 /* ForgotPassword.swift */,
-				6F5263E820F3D61B0042EA6A /* Portfolio.swift */,
-				6F5263EA20F3D6360042EA6A /* Transfer.swift */,
+				6F5263E820F3D61B0042EA6A /* Accounts.swift */,
 				6F5263EC20F3D6450042EA6A /* Profile.swift */,
 				6F6F651820EBF3B90023A647 /* Main.storyboard */,
 				6F6749D320F3C67900CB9A32 /* Misc */,
@@ -315,6 +327,7 @@
 				6FD4762620F3D3A4004E254A /* GoogleService-Info.plist in Resources */,
 				6F6F651C20EBF3BB0023A647 /* Assets.xcassets in Resources */,
 				6FA10E3B20F56C670011ABC8 /* FeatureList in Resources */,
+				56E23952210106DA001FA83B /* Transfer.storyboard in Resources */,
 				6F6F651A20EBF3B90023A647 /* Main.storyboard in Resources */,
 				6F6D3FE42100FD6A0037B868 /* DatabaseNotes in Resources */,
 			);
@@ -422,7 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F5263E920F3D61B0042EA6A /* Portfolio.swift in Sources */,
+				6F5263E920F3D61B0042EA6A /* Accounts.swift in Sources */,
 				6F5263ED20F3D6450042EA6A /* Profile.swift in Sources */,
 				6F5263EB20F3D6360042EA6A /* Transfer.swift in Sources */,
 				6F6F651720EBF3B90023A647 /* Login.swift in Sources */,

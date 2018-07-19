@@ -1,5 +1,5 @@
 //
-//  Portfolio.swift
+//  Accounts.swift
 //  BankingApp
 //
 //  Created by Bradley Dodds on 7/9/18.
@@ -16,7 +16,7 @@ struct data {
     let title2: String!
 }
 
-class Portfolio: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     @IBOutlet weak var welcomeLabel: UILabel!

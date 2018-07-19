@@ -23,8 +23,8 @@ class Transfer: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateAccountValues()
-        fbActiveListner()
+//        updateAccountValues()
+//        fbActiveListner()
         hideKeyboardWhenTappedAround()
         
        

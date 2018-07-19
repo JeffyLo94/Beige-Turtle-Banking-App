@@ -12,7 +12,7 @@
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="Login" customModule="BankingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" id="BYZ-38-t0r" customClass="Login" customModule="BankingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,6 +101,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="Item" id="89M-Rc-KaG"/>
                     <connections>
                         <outlet property="email" destination="vjw-Xb-d0W" id="M2K-cU-nBM"/>
                         <outlet property="password" destination="6yo-eK-PgD" id="bta-VP-eQE"/>
@@ -209,46 +210,10 @@
             </objects>
             <point key="canvasLocation" x="135" y="935.91549295774644"/>
         </scene>
-        <!--Transfer-->
-        <scene sceneID="jmy-uM-Fwk">
-            <objects>
-                <viewController id="TQ8-ST-wkh" customClass="Transfer" customModule="BankingApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="D1I-yv-Hh2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dD0-i3-ECv">
-                                <rect key="frame" x="74" y="299" width="145" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Vv-6D-VMY">
-                                <rect key="frame" x="74" y="360" width="145" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="TransferB:" destination="TQ8-ST-wkh" eventType="touchUpInside" id="fov-9w-vOr"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Hvb-CX-ARY"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Transfer" id="OwG-cH-gkU"/>
-                    <connections>
-                        <outlet property="amount_Transfer" destination="dD0-i3-ECv" id="vTf-wW-Shv"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="inu-hD-6pM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2231.25" y="544.0140845070423"/>
-        </scene>
-        <!--Portfolio-->
+        <!--Accounts-->
         <scene sceneID="aje-M7-Rzp">
             <objects>
-                <viewController id="UFx-c4-DPy" customClass="Portfolio" customModule="BankingApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main.accounts" id="UFx-c4-DPy" userLabel="Accounts" customClass="Accounts" customModule="BankingApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GAR-tH-Ac3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,7 +309,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L3f-fI-QXb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Portfolio" id="tDf-5i-iMZ"/>
+                    <tabBarItem key="tabBarItem" title="Accounts" id="tDf-5i-iMZ"/>
                     <connections>
                         <outlet property="tableView" destination="bLp-SV-OYw" id="aYI-Ye-Rh0"/>
                         <outlet property="welcomeLabel" destination="e7L-We-Hhu" id="qne-Wg-jC5"/>
@@ -381,13 +346,22 @@
                     </tabBar>
                     <connections>
                         <segue destination="UFx-c4-DPy" kind="relationship" relationship="viewControllers" id="tKw-Q9-RSO"/>
-                        <segue destination="TQ8-ST-wkh" kind="relationship" relationship="viewControllers" id="qDQ-Ao-X9J"/>
-                        <segue destination="Itn-3k-x2U" kind="relationship" relationship="viewControllers" id="8Le-Jr-X6Q"/>
+                        <segue destination="DDx-cn-jIB" kind="relationship" relationship="viewControllers" id="6y9-A9-tOK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Txv-nK-t0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1284" y="133"/>
+        </scene>
+        <!--transfer.transfer-->
+        <scene sceneID="MNU-2f-oHd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Transfer" referencedIdentifier="transfer.transfer" id="DDx-cn-jIB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="iLX-DP-0S4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cuN-0g-qqI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1283" y="694"/>
         </scene>
     </scenes>
 </document>
