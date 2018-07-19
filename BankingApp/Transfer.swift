@@ -23,33 +23,49 @@ class Transfer: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //populateUserData()
         updateAccountValues()
         fbActiveListner()
+        hideKeyboardWhenTappedAround()
         
        
     }
     
    
     
-
-    
-    
-    
-    
-    
-    
-    
     @IBAction func TransferB(_ sender: Any) {
-        print("Button Presses")
         
+        print("Button Pressed")
+        print("Transfer Amount: \(amount_Transfer.text!)")
+        print("$ Amount: \(String(describing: Double(amount_Transfer.text!)!.currency))")
         
+        //Acount for button amount_Transfer == nil
+        //Logic of saving and checkings transfer
         
-        print(amount_Transfer.text)
+        //if transfer_amount <= FROM ACCOUNT
+        //..........transfer funds
+        //else
+        //error not enough funds in FROM ACCOUNT
     }
     
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //MARK: Functions Below are for Firebase Database
     
     
     func updateAccountValues() {
@@ -67,11 +83,6 @@ class Transfer: UIViewController {
         //adds transaction to "ransactions" in database
         //ref.child("transactions").child(userID).childByAutoId().setValue(["transaction": "0.00"])
     }
-    
-    
-    
-    
-    
     
     
     

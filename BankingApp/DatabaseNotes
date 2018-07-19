@@ -1,0 +1,15 @@
+func updateAccountValues() {
+
+let userID : String = Auth.auth().currentUser!.uid
+ref = Database.database().reference()
+
+ref.child("accounts").child(userID).child("checking").updateChildValues(["account_balance": checking.balance,
+"available_balance": checking.available_balance,
+])
+ref.child("accounts").child(userID).child("savings").updateChildValues(["account_balance": savings.balance,
+"available_balance": savings.balance,
+])
+
+//adds transaction to "ransactions" in database
+//ref.child("transactions").child(userID).childByAutoId().setValue(["transaction": "0.00"])
+}
