@@ -13,15 +13,25 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class Transfer: UIViewController {
+class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var ref: DatabaseReference!
     
-    @IBOutlet weak var amount_Transfer: UITextField!
+    @IBOutlet weak var transferFromPicker: UIPickerView!
+    @IBOutlet weak var transferToPicker: UIPickerView!
+    //Remeber names of account
+    var toAccount: String?
+    var fromAccount: String?
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //I have no idea what this does
+        self.transferFromPicker.dataSource = self
+        self.transferFromPicker.delegate = self
+        
+        self.transferToPicker.dataSource = self
+        self.transferToPicker.delegate = self
 
 //        updateAccountValues()
 //        fbActiveListner()
@@ -30,23 +40,39 @@ class Transfer: UIViewController {
        
     }
     
-   
-    
-    @IBAction func TransferB(_ sender: Any) {
-        
-        print("Button Pressed")
-        print("Transfer Amount: \(amount_Transfer.text!)")
-        print("$ Amount: \(String(describing: Double(amount_Transfer.text!)!.currency))")
-        
-        //Acount for button amount_Transfer == nil
-        //Logic of saving and checkings transfer
-        
-        //if transfer_amount <= FROM ACCOUNT
-        //..........transfer funds
-        //else
-        //error not enough funds in FROM ACCOUNT
+    //Still have no idea what these do
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //return client.number_of_accounts
+        return dataArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return dataArray[row].name
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        if(pickerView == transferFromPicker)
+        {
+            fromAccount = dataArray[row].name
+        }
+        else{
+            toAccount = dataArray[row].name
+        }
+    }
+    
+    
+    @IBAction func transferButton(_ sender: UIButton) {
+        //Checks if user selected the same accounts
+        //Should display an Alert Message But I dont know how
+        if toAccount == fromAccount{
+            print("ACCOUNTS CANNOT BE THE SAME")
+        }
+    }
     
     
     
