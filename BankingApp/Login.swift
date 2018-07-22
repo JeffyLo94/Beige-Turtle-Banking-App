@@ -65,11 +65,17 @@ class Login: UIViewController {
                     for child in snapshot.children.allObjects as! [DataSnapshot] {
                         //print(child.value)
                         let dict = child.value as? [String : AnyObject] ?? [:]
-                        //print(dict["account_balance"])
+//                        print(dict["account_balance"])
                         
-                        account.name = dict["account_type"] as! String
+                        guard let acctType = dict["account_type"] else {
+//                            account.name = "ERROR - Uknown Acct Type"
+                            print("WARNING - Account Type Missing/nNot added to accounts list")
+                            continue
+                        }
+                        
+                        account.name = String(describing: acctType)
                         account.balance = dict["account_balance"] as! Double
-                        account.available_balance = dict["account_balance"] as! Double
+                        account.available_balance = dict["available_balance"] as! Double
                         
                         if(account.name == "Visa Credit"){
                             
@@ -87,9 +93,7 @@ class Login: UIViewController {
                         
                     }
                     
-                   
                     
-
                     
                     self.performSegue(withIdentifier: "goMain", sender: nil)
                     
