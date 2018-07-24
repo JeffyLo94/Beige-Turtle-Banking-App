@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		034A3C630992566F02B51296 /* Pods_BankingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02B4FBEA0A3743757D2D78B5 /* Pods_BankingAppUITests.framework */; };
 		4808B29F61001D324E9B72CB /* Pods_BankingApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B7AE938D3FEC1568FC85B7 /* Pods_BankingApp.framework */; };
+		566ACCD621063BF600DED51D /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566ACCD521063BF600DED51D /* AccountDetails.swift */; };
+		566ACCD82106413D00DED51D /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566ACCD72106413D00DED51D /* AccountTableViewCell.swift */; };
 		56E23952210106DA001FA83B /* Transfer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56E23951210106DA001FA83B /* Transfer.storyboard */; };
 		6F31FEE720F3DD8800BE2B3E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F31FEE620F3DD8800BE2B3E /* User.swift */; };
 		6F5263E920F3D61B0042EA6A /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5263E820F3D61B0042EA6A /* Accounts.swift */; };
@@ -52,6 +54,8 @@
 		1F84299B14593F4DEDD88712 /* Pods-BankingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankingAppUITests/Pods-BankingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2685E8479A9E63EDA32460F3 /* Pods_BankingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BankingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		433FFAB1EDD07457E1E670A1 /* Pods-BankingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BankingAppUITests/Pods-BankingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		566ACCD521063BF600DED51D /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
+		566ACCD72106413D00DED51D /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		56E23951210106DA001FA83B /* Transfer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Transfer.storyboard; sourceTree = "<group>"; };
 		69CADE791EB189F803617134 /* Pods-BankingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BankingApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BankingApp/Pods-BankingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6F31FEE620F3DD8800BE2B3E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -160,9 +164,11 @@
 				6F6F651420EBF3B90023A647 /* AppDelegate.swift */,
 				6F6F651620EBF3B90023A647 /* Login.swift */,
 				6F6D3FE52100FF170037B868 /* ForgotPassword.swift */,
-				6F5263E820F3D61B0042EA6A /* Accounts.swift */,
 				6F5263EC20F3D6450042EA6A /* Profile.swift */,
 				6F6F651820EBF3B90023A647 /* Main.storyboard */,
+				6F5263E820F3D61B0042EA6A /* Accounts.swift */,
+				566ACCD72106413D00DED51D /* AccountTableViewCell.swift */,
+				566ACCD521063BF600DED51D /* AccountDetails.swift */,
 				6F6749D320F3C67900CB9A32 /* Misc */,
 				6F6F651B20EBF3BB0023A647 /* Assets.xcassets */,
 				6F6F651D20EBF3BB0023A647 /* LaunchScreen.storyboard */,
@@ -440,7 +446,9 @@
 				6F5263EB20F3D6360042EA6A /* Transfer.swift in Sources */,
 				6F6F651720EBF3B90023A647 /* Login.swift in Sources */,
 				6F31FEE720F3DD8800BE2B3E /* User.swift in Sources */,
+				566ACCD82106413D00DED51D /* AccountTableViewCell.swift in Sources */,
 				6F6F651520EBF3B90023A647 /* AppDelegate.swift in Sources */,
+				566ACCD621063BF600DED51D /* AccountDetails.swift in Sources */,
 				6F5263EF20F3D6D60042EA6A /* Alerts.swift in Sources */,
 				6F6749D520F3C6A900CB9A32 /* SupportingFunctions.swift in Sources */,
 				6F6D3FE62100FF170037B868 /* ForgotPassword.swift in Sources */,
@@ -621,14 +629,14 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YJ6A77428;
+				DEVELOPMENT_TEAM = P977Y7AP73;
 				INFOPLIST_FILE = BankingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fullerton.bankingapp.BankingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullerton.bankingapp.BankingApp123456;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -645,14 +653,14 @@
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5YJ6A77428;
+				DEVELOPMENT_TEAM = P977Y7AP73;
 				INFOPLIST_FILE = BankingApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.fullerton.bankingapp.BankingApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fullerton.bankingapp.BankingApp123456;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

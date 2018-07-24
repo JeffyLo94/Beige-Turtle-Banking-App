@@ -41,7 +41,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
        
     }
     
-    //Still have no idea what these do
+    // Still have no idea what these do
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -80,7 +80,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         
         if toAccount == fromAccount{
-            print("ACCOUNTS CANNOT BE THE SAME")
+            print("Accounts cannot be the same.")
         }
             //else if Int(amountEntered.text!) > dataArray[fromAccount].available_balance
         else{

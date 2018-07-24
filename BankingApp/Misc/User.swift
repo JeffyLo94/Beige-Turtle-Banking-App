@@ -8,7 +8,7 @@
 
 import Foundation
 
-var dataArray = [accountGlobal]()
+var dataArray = [account]()
 
 struct client {
     
@@ -22,24 +22,24 @@ struct client {
 struct account {
     
     
-    static var name: String!
-    static var balance: Double!
-    static var amount_due: Double!
-    static var available_balance: Double!
-    static var credit_limit: Double!
+    var name: String!
+    var balance: Double!
+    var amount_due: Double!
+    var available_balance: Double!
+    var credit_limit: Double!
     
 }
 
-struct accountGlobal {
-    
-    
-    let name: String!
-    let balance: Double!
-    let amount_due: Double!
-    let available_balance: Double!
-    let credit_limit: Double!
-    
-}
+//struct accountGlobal {
+//
+//
+//    let name: String!
+//    let balance: Double!
+//    let amount_due: Double!
+//    let available_balance: Double!
+//    let credit_limit: Double!
+//
+//}
 
 
 struct checking {

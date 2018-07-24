@@ -46,8 +46,19 @@ class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
         print("In Portfolio...")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ListToAccountDetails"){
+            if sender is AccountTableViewCell {
+                let cell = sender as! AccountTableViewCell
+                let acctDetailsVC = segue.destination as! AccountDetails
+                acctDetailsVC.account = cell.account
+            }
+        }
+    }
     
     func setUserData() {
         
@@ -81,19 +92,19 @@ class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: AccountTableViewCell = tableView.dequeueReusableCell(withIdentifier: "AccountTableViewCell", for: indexPath) as! AccountTableViewCell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+//
+//        let title = cell?.viewWithTag(1) as! UILabel
+//        let balance = cell?.viewWithTag(2) as! UILabel
+//        let title2 = cell?.viewWithTag(3) as! UILabel
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")
+        cell.account = dataArray[indexPath.row]
+        cell.title.text = portfolioArray[indexPath.row].title
+        cell.balance.text = portfolioArray[indexPath.row].balance
+        cell.subTitle.text = portfolioArray[indexPath.row].title2
         
-        let title = cell?.viewWithTag(1) as! UILabel
-        let balance = cell?.viewWithTag(2) as! UILabel
-        let title2 = cell?.viewWithTag(3) as! UILabel
-        
-        
-        title.text = portfolioArray[indexPath.row].title
-        balance.text = portfolioArray[indexPath.row].balance
-        title2.text = portfolioArray[indexPath.row].title2
-        
-        return cell!
+        return cell
         
         
     }
@@ -101,13 +112,17 @@ class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("\nNumber of Accounts: \(dataArray.count)\n")
         return dataArray.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
         tableView.deselectRow(at: indexPath as IndexPath, animated: false)
+        
+        
+//        performSegue(withIdentifier: "ListToAccountsDetails", sender: nil)
+        
     }
     
     
