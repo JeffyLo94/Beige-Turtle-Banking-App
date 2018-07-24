@@ -109,19 +109,43 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                     checking.balance = checking.balance - TranAmount
                     
                     //ADD to savings
-                    savings.available_balance = savings.available_balance + TranAmount
-                    savings.balance = savings.balance + TranAmount
-                    print("Transfered from Checkings to Savings")
+                    if toAccount == 1 {
+                        savings.available_balance = savings.available_balance + TranAmount
+                        savings.balance = savings.balance + TranAmount
+                        print("Transfered from Checkings to Savings")
+                    }
+                    else {
+                        if credit.balance + TranAmount < credit.credit_limit {
+                            credit.balance = credit.balance + TranAmount
+                        }
+                        else {
+                            print("Credit limit exceeded!")
+                        }
+                    }
                 }
                 else if fromAccount == 1
                 {
-                    //ADD from checking
-                    checking.available_balance = checking.available_balance + TranAmount
-                    checking.balance = checking.balance + TranAmount
-                    
                     //SUB from savings
                     savings.available_balance = savings.available_balance - TranAmount
                     savings.balance = savings.balance - TranAmount
+
+                    if toAccount == 0
+                    {
+                        //ADD from checking
+                        checking.available_balance = checking.available_balance + TranAmount
+                        checking.balance = checking.balance + TranAmount
+                    }
+                    else
+                    {
+                        if credit.balance + TranAmount < credit.credit_limit
+                        {
+                            credit.balance = credit.balance + TranAmount
+                        }
+                        else
+                        {
+                            print("Credit limit exceeded!")
+                        }
+                    }
                 }
                 else
                 {
@@ -136,20 +160,6 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     //MARK: Functions Below are for Firebase Database
     
     
@@ -159,14 +169,12 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         ref = Database.database().reference()
         
         ref.child("accounts").child(userID).child("checking").updateChildValues(["account_balance": checking.balance,
-                                                                                 "available_balance": checking.available_balance,
+                                                                                 "available_balance": checking.available_balance
                                                                                  ])
         ref.child("accounts").child(userID).child("savings").updateChildValues(["account_balance": savings.balance,
-                                                                                "available_balance": savings.balance,
+                                                                                "available_balance": savings.balance
                                                                                 ])
-        
-        //adds transaction to "ransactions" in database
-        //ref.child("transactions").child(userID).childByAutoId().setValue(["transaction": "0.00"])
+        ref.child("accounts").child(userID).child("credit").updateChildValues(["account_balance": credit.balance])
     }
     
     
