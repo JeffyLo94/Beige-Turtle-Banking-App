@@ -19,9 +19,10 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var transferFromPicker: UIPickerView!
     @IBOutlet weak var transferToPicker: UIPickerView!
+    @IBOutlet weak var amountEntered: UITextField!
     //Remeber names of account
-    var toAccount: String?
-    var fromAccount: String?
+    var toAccount: Int = 0
+    var fromAccount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +37,8 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 //        updateAccountValues()
 //        fbActiveListner()
         hideKeyboardWhenTappedAround()
-        
-       
     }
     
-    // Still have no idea what these do
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -58,42 +56,38 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     {
         if(pickerView == transferFromPicker)
         {
-            fromAccount = dataArray[row].name
+            fromAccount = row
         }
         else{
-            toAccount = dataArray[row].name
+            toAccount = row
         }
     }
-    
-    
+
     @IBAction func transferButton(_ sender: UIButton) {
         // Checks if user selected the same accounts
         // Should display an Alert Message But I dont know how
         if toAccount == fromAccount{
-            print("Accounts cannot be the same.")
+            print("Cannot transfer to the same account.")
+        }
+        else{
+            // Converts textfield into a #
+            let TranAmount: Double! = Double(amountEntered.text!)
+            
+            // Retrieve available balance from Account
+            let curAmount: Double = Double(dataArray[fromAccount].available_balance)
+            
+            // Checking 0, Saving 1, Credit 2
+            if fromAccount == 3 {
+                print("Cannot transfer from credit.")
+            }
+            // Check if amount wanting to be transfer exceeds available balance
+            else if TranAmount > curAmount{
+                print("Not enough funds in 'Transfer From Account'")
+            }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     //MARK: Functions Below are for Firebase Database
-    
-    
     func updateAccountValues() {
         
         let userID : String = Auth.auth().currentUser!.uid
@@ -105,17 +99,11 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         ref.child("accounts").child(userID).child("savings").updateChildValues(["account_balance": savings.balance,
                                                                                  "available_balance": savings.balance,
                                                                                  ])
-        
         //adds transaction to "ransactions" in database
         //ref.child("transactions").child(userID).childByAutoId().setValue(["transaction": "0.00"])
     }
     
-    
-    
-    
-    
     func fbActiveListner() {
-        
         let userID : String = Auth.auth().currentUser!.uid
         ref = Database.database().reference()
         
@@ -127,18 +115,6 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 //            let balance = snapDict?["account_balance"] as! Double
             
             //insert or append in array with struct
-  
-            
-            
-            
               })
-            
-        
     }
-    
-  
-    
-    
-   
-
 }//END Class
