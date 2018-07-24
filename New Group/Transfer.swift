@@ -33,15 +33,15 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         self.transferToPicker.dataSource = self
         self.transferToPicker.delegate = self
-
-//        updateAccountValues()
-//        fbActiveListner()
+        
+        //        updateAccountValues()
+        //        fbActiveListner()
         hideKeyboardWhenTappedAround()
         
-       
+        
     }
     
-    // Still have no idea what these do
+    //Still have no idea what these do
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -80,7 +80,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         
         if toAccount == fromAccount{
-            print("Accounts cannot be the same.")
+            print("ACCOUNTS CANNOT BE THE SAME")
         }
             //else if Int(amountEntered.text!) > dataArray[fromAccount].available_balance
         else{
@@ -90,7 +90,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
             let curAmount: Double = Double(dataArray[fromAccount].available_balance)
             let accountName = dataArray[fromAccount].name
             
-           
+            
             
             
             //Check if amount wanting to be transfer exceeds available balance
@@ -159,11 +159,11 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         ref = Database.database().reference()
         
         ref.child("accounts").child(userID).child("checking").updateChildValues(["account_balance": checking.balance,
-                                                                        "available_balance": checking.available_balance,
-                                                                        ])
-        ref.child("accounts").child(userID).child("savings").updateChildValues(["account_balance": savings.balance,
-                                                                                 "available_balance": savings.balance,
+                                                                                 "available_balance": checking.available_balance,
                                                                                  ])
+        ref.child("accounts").child(userID).child("savings").updateChildValues(["account_balance": savings.balance,
+                                                                                "available_balance": savings.balance,
+                                                                                ])
         
         //adds transaction to "ransactions" in database
         //ref.child("transactions").child(userID).childByAutoId().setValue(["transaction": "0.00"])
@@ -180,24 +180,24 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         ref.child("transactions").child(userID).queryOrderedByKey().observe(.childAdded, with: {snapshot in
             
-          print("Something was changed...")
+            print("Something was changed...")
             
-//            let snapDict = snapshot.value as? NSDictionary
-//            let balance = snapDict?["account_balance"] as! Double
+            //            let snapDict = snapshot.value as? NSDictionary
+            //            let balance = snapDict?["account_balance"] as! Double
             
             //insert or append in array with struct
-  
             
             
             
-              })
             
+        })
+        
         
     }
     
-  
     
     
-   
-
+    
+    
+    
 }//END Class
