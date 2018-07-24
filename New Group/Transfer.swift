@@ -40,13 +40,13 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
        
     }
     
-    //Still have no idea what these do
+    // Still have no idea what these do
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //return client.number_of_accounts
+        // return client.number_of_accounts
         return dataArray.count
     }
     
@@ -67,10 +67,10 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
     
     @IBAction func transferButton(_ sender: UIButton) {
-        //Checks if user selected the same accounts
-        //Should display an Alert Message But I dont know how
+        // Checks if user selected the same accounts
+        // Should display an Alert Message But I dont know how
         if toAccount == fromAccount{
-            print("ACCOUNTS CANNOT BE THE SAME")
+            print("Accounts cannot be the same.")
         }
     }
     
