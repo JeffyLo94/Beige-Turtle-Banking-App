@@ -82,6 +82,7 @@
                     <tabBarItem key="tabBarItem" title="Transfer" id="A27-k7-yE1"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="amountEntered" destination="yHd-3W-h4g" id="wqS-eo-V8j"/>
                         <outlet property="transferFromPicker" destination="HDL-yi-dVU" id="GdZ-NF-OhA"/>
                         <outlet property="transferToPicker" destination="cdg-Oz-ffi" id="UUW-b8-ur9"/>
                         <segue destination="QK1-od-FGo" kind="show" id="AL0-0G-fPK"/>
