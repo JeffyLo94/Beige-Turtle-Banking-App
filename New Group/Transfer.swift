@@ -5,7 +5,6 @@
 //  Created by Bradley Dodds on 7/9/18.
 //  Copyright © 2018 brad. All rights reserved.
 //
-
 //Example of picker view
 //https://codewithchris.com/uipickerview-example/
 
@@ -27,7 +26,6 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //I have no idea what this does
         self.transferFromPicker.dataSource = self
         self.transferFromPicker.delegate = self
         
@@ -69,34 +67,91 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
             toAccount = row
         }
     }
-
+    
     @IBAction func transferButton(_ sender: UIButton) {
         //Checks if user selected the same accounts
         //Should display an Alert Message But I dont know how
         
         
         if toAccount == fromAccount{
-            print("Cannot transfer to the same account.")
+            print("ACCOUNTS CANNOT BE THE SAME")
         }
+            // else if Int(amountEntered.text!) > dataArray[fromAccount].available_balance
         else{
-            // Converts textfield into a #
+            // Coverts textfield into an Int
             let TranAmount: Double! = Double(amountEntered.text!)
-            
-            // Retrieve available balance from Account
+            // Retrieve available ballace of fromAccount
             let curAmount: Double = Double(dataArray[fromAccount].available_balance)
+            let accountName = dataArray[fromAccount].name
             
-            // Checking 0, Saving 1, Credit 2
-            if fromAccount == 3 {
-                print("Cannot transfer from credit.")
-            }
+            
+            
             // Check if amount wanting to be transfer exceeds available balance
-            else if TranAmount > curAmount{
-                print("Not enough funds in 'Transfer From Account'")
+            if TranAmount > curAmount
+            {
+                print("Not enough funds")
+            }
+            else
+            {
+                print("checking")
+                if fromAccount == 0
+                {
+                    // SUBTRACT from checking
+                    checking.available_balance = checking.available_balance - TranAmount
+                    checking.balance = checking.balance - TranAmount
+                    
+                    // ADD to savings
+                    if toAccount == 1 {
+                        savings.available_balance = savings.available_balance + TranAmount
+                        savings.balance = savings.balance + TranAmount
+                        print("Transfered from Checkings to Savings")
+                    }
+                    else {
+                        if credit.balance + TranAmount < credit.credit_limit {
+                            credit.balance = credit.balance + TranAmount
+                        }
+                        else {
+                            print("Credit limit exceeded!")
+                        }
+                    }
+                }
+                else if fromAccount == 1
+                {
+                    // SUB from savings
+                    savings.available_balance = savings.available_balance - TranAmount
+                    savings.balance = savings.balance - TranAmount
+                    
+                    if toAccount == 0
+                    {
+                        // ADD from checking
+                        checking.available_balance = checking.available_balance + TranAmount
+                        checking.balance = checking.balance + TranAmount
+                    }
+                    else
+                    {
+                        if credit.balance + TranAmount < credit.credit_limit
+                        {
+                            credit.balance = credit.balance + TranAmount
+                        }
+                        else
+                        {
+                            print("Credit limit exceeded!")
+                        }
+                    }
+                }
+                else
+                {
+                    print("ERROR CANNOT TRANSFER FROM CREDIT")
+                }
+                
+                updateAccountValues()
             }
         }
     }
-   
+    
+    
     //MARK: Functions Below are for Firebase Database
+    
     func updateAccountValues() {
         
         let userID : String = Auth.auth().currentUser!.uid
@@ -104,12 +159,16 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         ref.child("accounts").child(userID).child("checking").updateChildValues(["account_balance": checking.balance,
                                                                                  "available_balance": checking.available_balance
-                                                                                 ])
-        //adds transaction to "ransactions" in database
-        //ref.child("transactions").child(userID).childByAutoId().setValue(["transaction": "0.00"])
+            ])
+        ref.child("accounts").child(userID).child("savings").updateChildValues(["account_balance": savings.balance,
+                                                                                "available_balance": savings.balance
+            ])
+        ref.child("accounts").child(userID).child("credit").updateChildValues(["account_balance": credit.balance])
     }
     
+    
     func fbActiveListner() {
+        
         let userID : String = Auth.auth().currentUser!.uid
         ref = Database.database().reference()
         
@@ -121,6 +180,13 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
             //            let balance = snapDict?["account_balance"] as! Double
             
             //insert or append in array with struct
-              })
+     
+            
+        })
+        
+        
     }
+    
+    
+    
 }//END Class
