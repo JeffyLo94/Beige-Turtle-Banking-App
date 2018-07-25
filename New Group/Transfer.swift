@@ -163,7 +163,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         ref.child("accounts").child(userID).child("savings").updateChildValues(["account_balance": savings.balance,
                                                                                 "available_balance": savings.balance
             ])
-        ref.child("accounts").child(userID).child("credit").updateChildValues(["account_balance": credit.balance])
+        ref.child("accounts").child(userID).child("visa_credit").updateChildValues(["account_balance": credit.balance])
     }
     
     
