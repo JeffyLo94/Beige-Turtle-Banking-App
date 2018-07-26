@@ -19,6 +19,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var transferFromPicker: UIPickerView!
     @IBOutlet weak var transferToPicker: UIPickerView!
     @IBOutlet weak var amountEntered: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
     //Remeber names of account
     var toAccount: Int = 0
     var fromAccount: Int = 0
@@ -75,6 +76,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         if toAccount == fromAccount{
             print("ACCOUNTS CANNOT BE THE SAME")
+            errorLabel.text = "*Accounts cannot be the same"
         }
             // else if Int(amountEntered.text!) > dataArray[fromAccount].available_balance
         else{
@@ -82,14 +84,25 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
             let TranAmount: Double! = Double(amountEntered.text!)
             // Retrieve available ballace of fromAccount
             let curAmount: Double = Double(dataArray[fromAccount].available_balance)
-            let accountName = dataArray[fromAccount].name
+            //let accountName = dataArray[fromAccount].name
             
             
             
             // Check if amount wanting to be transfer exceeds available balance
-            if TranAmount > curAmount
+            if TranAmount == nil
+            {
+                print("No amount entered")
+                errorLabel.text = "*Enter amount over $100"
+            }
+            else if TranAmount > curAmount
             {
                 print("Not enough funds")
+                errorLabel.text = "*Not enough funds"
+            }
+            else if TranAmount < 100
+            {
+                print("Must transfer over $100")
+                errorLabel.text = "*Must transfer over $100"
             }
             else
             {
@@ -105,13 +118,17 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         savings.available_balance = savings.available_balance + TranAmount
                         savings.balance = savings.balance + TranAmount
                         print("Transfered from Checkings to Savings")
+                        errorLabel.text = ""
                     }
                     else {
-                        if credit.balance + TranAmount < credit.credit_limit {
+                        if credit.balance + TranAmount < credit.credit_limit
+                        {
                             credit.balance = credit.balance + TranAmount
+                            errorLabel.text = ""
                         }
                         else {
                             print("Credit limit exceeded!")
+                            errorLabel.text = "*Credit limit exceeded"
                         }
                     }
                 }
@@ -138,10 +155,12 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                             print("Credit limit exceeded!")
                         }
                     }
+                    errorLabel.text = ""
                 }
                 else
                 {
                     print("ERROR CANNOT TRANSFER FROM CREDIT")
+                    errorLabel.text = "*Cannot transfer from credit"
                 }
                 
                 updateAccountValues()
