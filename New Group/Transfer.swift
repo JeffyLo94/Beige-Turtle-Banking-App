@@ -130,7 +130,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         dataArray[1].available_balance = savings.available_balance
                         dataArray[1].balance = savings.balance
                         
-                        logMsg = "Checking transfer + \(String(savings.balance.currency))"
+                        logMsg = "Savings transfer + \(String(savings.balance.currency))"
                         print(logMsg)
                     }
                     else {
@@ -159,6 +159,8 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                     dataArray[1].available_balance = savings.available_balance
                     dataArray[1].balance = savings.balance
                     
+                    logMsg = "Checking transfer + \(String(savings.balance.currency))"
+                    
                     if toAccount == 0
                     {
                         // ADD from checking
@@ -182,6 +184,8 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                             Alerts().validTransfer(sender: self)
                             
                             dataArray[2].balance = credit.balance
+                            
+                            logMsg = "Credit transfer + \(String(savings.balance.currency))"
                         }
                         else
                         {
@@ -216,28 +220,36 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                                                                                 "available_balance": savings.balance
             ])
         ref.child("accounts").child(userID).child("visa_credit").updateChildValues(["account_balance": credit.balance])
-    }
-    
-    
-    func fbActiveListner() {
         
-        let userID : String = Auth.auth().currentUser!.uid
-        ref = Database.database().reference()
-        
-        ref.child("transactions").child(userID).queryOrderedByKey().observe(.childAdded, with: {snapshot in
-            
-            print("Something was changed...")
-            
-            //            let snapDict = snapshot.value as? NSDictionary
-            //            let balance = snapDict?["account_balance"] as! Double
-            
-            //insert or append in array with struct
-     
-            
-        })
         
         
     }
+    
+    
+    //Recieving money :: Recieved from
+    //Transfering Money:: Transfer From
+    
+    
+    
+//    func fbActiveListner() {
+//
+//        let userID : String = Auth.auth().currentUser!.uid
+//        ref = Database.database().reference()
+//
+//        ref.child("transactions").child(userID).queryOrderedByKey().observe(.childAdded, with: {snapshot in
+//
+//            print("Something was changed...")
+//
+//            //            let snapDict = snapshot.value as? NSDictionary
+//            //            let balance = snapDict?["account_balance"] as! Double
+//
+//            //insert or append in array with struct
+//
+//
+//        })
+//
+//
+//    }
     
     
     
