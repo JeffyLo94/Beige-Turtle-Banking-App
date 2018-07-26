@@ -21,7 +21,15 @@ class Alerts: UIViewController {
         
         sender.present(alert, animated: true)
     }
-
+    
+    func validTransfer(sender: UIViewController) {
+        
+        let alert = UIAlertController(title: "Valid", message: "Transfer succeeded!", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        sender.present(alert, animated: true)
+    }
 
 
 }

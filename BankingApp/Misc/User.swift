@@ -58,6 +58,13 @@ struct savings {
     
 }
 
+struct credit {
+    
+    static var name: String!
+    static var balance: Double!
+    static var credit_limit: Double!
+}
+
 
 
 //For populating user data in database

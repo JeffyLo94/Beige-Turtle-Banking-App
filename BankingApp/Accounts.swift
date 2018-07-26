@@ -14,6 +14,7 @@ struct data {
     let title: String!
     let balance: String!
     let title2: String!
+    let credit_limit: String!
 }
 
 class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -66,7 +67,7 @@ class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         for (index, element) in dataArray.enumerated() {
             
-            portfolioArray.insert(data(title: element.name, balance: element.balance.currency, title2: "Account Balance"), at: index)
+            portfolioArray.insert(data(title: element.name, balance: element.balance.currency, title2: "Account Balance", credit_limit: element.credit_limit.currency), at: index)
             
             //Set a struct for savings and checking
             if(element.name == "Checking"){
@@ -80,9 +81,16 @@ class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 savings.available_balance = element.available_balance
          
         }
+            if(element.name == "Visa Credit"){
+                credit.name = element.name
+                credit.balance = element.balance
+                credit.credit_limit = element.credit_limit
+            }
       
        
     }
+        
+        tableView.reloadData()
     
     }
 
