@@ -19,6 +19,13 @@ class AccountDetails: UIViewController {
     @IBOutlet var balanceValue: UILabel!
     @IBOutlet var acctSubLabel: UILabel!
     @IBOutlet var acctOverview: UIView!
+    @IBOutlet var creditCardView: UIView!
+    @IBOutlet var creditCardTitle: UILabel!
+    @IBOutlet var creditLimitTitle: UILabel!
+    @IBOutlet var creditLimitValue: UILabel!
+    @IBOutlet var creditCardImage: UIImageView!
+    @IBOutlet var cardSwitch: UISwitch?
+    @IBOutlet var scroller: UIScrollView!
     
     //Border Stuff:
     let borderSize:CGFloat = 2.0
@@ -28,25 +35,25 @@ class AccountDetails: UIViewController {
     var account: account?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-//        setUserData()
-//
-//        //TableView Assignment
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.tableFooterView = UIView()
+        self.cardSwitch?.isOn = true
+        self.cardSwitch?.transform = CGAffineTransform(scaleX: 1.0, y: 0.9)
+//        self.acctOverview.layer.borderColor = borderColor
+//        self.acctOverview.layer.borderWidth = borderSize
+//        self.creditCardView.layer.borderColor = borderColor
+//        self.creditCardView.layer.borderWidth = borderSize
         
-        self.acctOverview.layer.borderColor = borderColor
-        self.acctOverview.layer.borderWidth = borderSize
-//        self.acctDetailsView.layer.borderColor = borderColor
-//        self.acctDetailsView.layer.borderWidth = borderSize
-
+        scroller.contentSize = CGSize(width: scroller.contentSize.width, height: 1000)
+        
         populateData()
+        
+        super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
 //        setUserData()
+        
+
         
         print("In Account Details...")
     }
@@ -54,6 +61,10 @@ class AccountDetails: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         
+        creditCardView.isHidden = true;
+        if (account?.name == "Visa Credit"){
+            creditCardView.isHidden = false;
+        }
     }
     
     func populateData(){
