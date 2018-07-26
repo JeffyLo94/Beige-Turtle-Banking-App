@@ -75,8 +75,8 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         
         if toAccount == fromAccount{
-            print("ACCOUNTS CANNOT BE THE SAME")
-            errorLabel.text = "*Accounts cannot be the same"
+            print("Accounts cannot be the same")
+            errorLabel.text = "* Accounts cannot be the same"
         }
             // else if Int(amountEntered.text!) > dataArray[fromAccount].available_balance
         else{
@@ -92,17 +92,17 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
             if TranAmount == nil
             {
                 print("No amount entered")
-                errorLabel.text = "*Enter amount over $100"
+                errorLabel.text = "* Enter amount over $0.0"
             }
             else if TranAmount > curAmount
             {
                 print("Not enough funds")
-                errorLabel.text = "*Not enough funds"
+                errorLabel.text = "* Not enough funds"
             }
-            else if TranAmount < 100
+            else if TranAmount < 0
             {
-                print("Must transfer over $100")
-                errorLabel.text = "*Must transfer over $100"
+                print("Must transfer over $0.0")
+                errorLabel.text = "* Must transfer over $0.0"
             }
             else
             {
@@ -119,16 +119,19 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         savings.balance = savings.balance + TranAmount
                         print("Transfered from Checkings to Savings")
                         errorLabel.text = ""
+                        Alerts().validTransfer(sender: self)
                     }
                     else {
                         if credit.balance + TranAmount < credit.credit_limit
                         {
                             credit.balance = credit.balance + TranAmount
+                            print("Transfered from Checkings to Credit")
                             errorLabel.text = ""
+                            Alerts().validTransfer(sender: self)
                         }
                         else {
                             print("Credit limit exceeded!")
-                            errorLabel.text = "*Credit limit exceeded"
+                            errorLabel.text = "* Credit limit exceeded"
                         }
                     }
                 }
@@ -143,24 +146,30 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         // ADD from checking
                         checking.available_balance = checking.available_balance + TranAmount
                         checking.balance = checking.balance + TranAmount
+                        print("Transfered from Savings to Checking")
+                        errorLabel.text = ""
+                        Alerts().validTransfer(sender: self)
                     }
                     else
                     {
                         if credit.balance + TranAmount < credit.credit_limit
                         {
                             credit.balance = credit.balance + TranAmount
+                            print("Transfered from Savings to Credit")
+                            errorLabel.text = ""
+                            Alerts().validTransfer(sender: self)
                         }
                         else
                         {
                             print("Credit limit exceeded!")
+                            errorLabel.text = "* Credit limit exceeded!"
                         }
                     }
-                    errorLabel.text = ""
                 }
                 else
                 {
-                    print("ERROR CANNOT TRANSFER FROM CREDIT")
-                    errorLabel.text = "*Cannot transfer from credit"
+                    print("Cannot transfer from Credit")
+                    errorLabel.text = "* Cannot transfer from Credit"
                 }
                 
                 updateAccountValues()
