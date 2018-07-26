@@ -23,6 +23,7 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     //Remeber names of account
     var toAccount: Int = 0
     var fromAccount: Int = 0
+    var logMsg: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,6 +114,10 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                     checking.available_balance = checking.available_balance - TranAmount
                     checking.balance = checking.balance - TranAmount
                     
+                    // Update values in database
+                    dataArray[0].available_balance = checking.available_balance
+                    dataArray[0].balance = checking.balance
+                    
                     // ADD to savings
                     if toAccount == 1 {
                         savings.available_balance = savings.available_balance + TranAmount
@@ -120,6 +125,13 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         print("Transfered from Checkings to Savings")
                         errorLabel.text = ""
                         Alerts().validTransfer(sender: self)
+                        
+                        // Update database
+                        dataArray[1].available_balance = savings.available_balance
+                        dataArray[1].balance = savings.balance
+                        
+                        logMsg = "Checking transfer + \(String(savings.balance.currency))"
+                        print(logMsg)
                     }
                     else {
                         if credit.balance + TranAmount < credit.credit_limit
@@ -128,6 +140,8 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                             print("Transfered from Checkings to Credit")
                             errorLabel.text = ""
                             Alerts().validTransfer(sender: self)
+                            
+                            dataArray[2].balance = credit.balance
                         }
                         else {
                             print("Credit limit exceeded!")
@@ -141,6 +155,10 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                     savings.available_balance = savings.available_balance - TranAmount
                     savings.balance = savings.balance - TranAmount
                     
+                    // Update values in database
+                    dataArray[1].available_balance = savings.available_balance
+                    dataArray[1].balance = savings.balance
+                    
                     if toAccount == 0
                     {
                         // ADD from checking
@@ -149,6 +167,10 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         print("Transfered from Savings to Checking")
                         errorLabel.text = ""
                         Alerts().validTransfer(sender: self)
+                        
+                        // Update database
+                        dataArray[0].available_balance = checking.available_balance
+                        dataArray[0].balance = checking.balance
                     }
                     else
                     {
@@ -158,6 +180,8 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                             print("Transfered from Savings to Credit")
                             errorLabel.text = ""
                             Alerts().validTransfer(sender: self)
+                            
+                            dataArray[2].balance = credit.balance
                         }
                         else
                         {

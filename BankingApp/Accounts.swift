@@ -89,6 +89,8 @@ class Accounts: UIViewController, UITableViewDelegate, UITableViewDataSource {
       
        
     }
+        
+        tableView.reloadData()
     
     }
 
