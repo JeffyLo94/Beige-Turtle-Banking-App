@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class ForgotPassword: UIViewController {
     
@@ -15,10 +17,13 @@ class ForgotPassword: UIViewController {
     @IBOutlet weak var securityQuestion: UITextField!
     @IBOutlet weak var email: UITextField!
     
+    var securityAnswer = "csuf"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        securityQuestionLabel.text = "What is the name of your university?"
         
         
         
@@ -29,6 +34,33 @@ class ForgotPassword: UIViewController {
 
         print("Security Answer: \(securityQuestion.text!)")
         print("Email: \(email.text!)")
+        
+        if(securityQuestion.text == "csuf".lowercased()) {
+            
+            Auth.auth().sendPasswordReset(withEmail: email.text!) { (error) in
+             
+                if error == nil {
+                    //registration successful
+                    let alertMessage = "A verification email has been sent."
+                    print(alertMessage)
+                    
+                }else{
+                    //registration failure
+                    let error = error?.localizedDescription ?? String()
+                    print(error)
+                    
+                    
+                    
+                }
+            }
+            
+            
+            
+            
+        }else {
+            
+            print("Security Question is incorrect...")
+        }
         
     }
     

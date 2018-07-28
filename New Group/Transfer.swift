@@ -118,6 +118,15 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                     dataArray[0].available_balance = checking.available_balance
                     dataArray[0].balance = checking.balance
                     
+                    //Withdraw amount to databae
+                    withdrawTransactions(accountName: dataArray[0].name, withdrawAmount: TranAmount)
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                     // ADD to savings
                     if toAccount == 1 {
                         savings.available_balance = savings.available_balance + TranAmount
@@ -130,8 +139,16 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         dataArray[1].available_balance = savings.available_balance
                         dataArray[1].balance = savings.balance
                         
-                        logMsg = "Savings transfer + \(String(savings.balance.currency))"
-                        print(logMsg)
+                        
+                        //From Checking:
+                        logMsg = "Deposit From Checking \(String(TranAmount.currency))"
+                        savingsTransactions(transaction: logMsg)
+                        
+                        
+                        
+                        
+                        
+                       
                     }
                     else {
                         if credit.balance + TranAmount < credit.credit_limit
@@ -140,8 +157,11 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                             print("Transfered from Checkings to Credit")
                             errorLabel.text = ""
                             Alerts().validTransfer(sender: self)
-                            
                             dataArray[2].balance = credit.balance
+                            
+                            //From checking to cfedit:
+                            logMsg = "Deposit From Checking \(String(TranAmount.currency))"
+                            creditTransactions(transaction: logMsg)
                         }
                         else {
                             print("Credit limit exceeded!")
@@ -159,7 +179,11 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                     dataArray[1].available_balance = savings.available_balance
                     dataArray[1].balance = savings.balance
                     
-                    logMsg = "Checking transfer + \(String(savings.balance.currency))"
+                    //Withdraw amount to databae
+                    withdrawTransactions(accountName: dataArray[1].name, withdrawAmount: TranAmount)
+                    
+                    
+                    
                     
                     if toAccount == 0
                     {
@@ -173,6 +197,14 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                         // Update database
                         dataArray[0].available_balance = checking.available_balance
                         dataArray[0].balance = checking.balance
+                        
+                        //From Savings to checking:
+                        logMsg = "Deposit From Savings \(String(TranAmount.currency))"
+                        checkingTransactions(transaction: logMsg)
+                        
+                        
+                        
+                        
                     }
                     else
                     {
@@ -185,7 +217,10 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
                             
                             dataArray[2].balance = credit.balance
                             
-                            logMsg = "Credit transfer + \(String(savings.balance.currency))"
+                            //From savings to credit:
+                            logMsg = "Deposit From Savings \(String(TranAmount.currency))"
+                            creditTransactions(transaction: logMsg)
+                      
                         }
                         else
                         {
@@ -206,6 +241,10 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     
+    
+    
+    
+    
     //MARK: Functions Below are for Firebase Database
     
     func updateAccountValues() {
@@ -224,6 +263,48 @@ class Transfer: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
         
         
     }
+    
+    
+    func checkingTransactions(transaction: String) {
+        
+        let userID : String = Auth.auth().currentUser!.uid
+        ref = Database.database().reference()
+        
+        ref.child("transactions").child(userID).child("Checking").childByAutoId().setValue(["transaction": transaction])
+     
+    }
+    
+    func savingsTransactions(transaction: String) {
+        
+        let userID : String = Auth.auth().currentUser!.uid
+        ref = Database.database().reference()
+        
+        ref.child("transactions").child(userID).child("Savings").childByAutoId().setValue(["transaction": transaction])
+      
+    }
+    
+    func creditTransactions(transaction: String) {
+        
+        let userID : String = Auth.auth().currentUser!.uid
+        ref = Database.database().reference()
+        
+        ref.child("transactions").child(userID).child("Visa Credit").childByAutoId().setValue(["transaction": transaction])
+        
+    }
+    
+    func withdrawTransactions(accountName: String, withdrawAmount: Double!) {
+        
+        let userID : String = Auth.auth().currentUser!.uid
+        ref = Database.database().reference()
+    
+        let withdrawMessage = "Withdraw " + String(withdrawAmount.currency)
+        
+        ref.child("transactions").child(userID).child(accountName).childByAutoId().setValue(["transaction": withdrawMessage])
+        
+        
+    }
+    
+    
     
     
     //Recieving money :: Recieved from

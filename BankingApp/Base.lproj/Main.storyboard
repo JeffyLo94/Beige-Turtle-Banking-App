@@ -22,7 +22,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Tp8-Kf-FF0">
                                 <rect key="frame" x="18" y="343" width="286" height="154"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="johndoe@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vjw-Xb-d0W">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bankingappproject@gmail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vjw-Xb-d0W">
                                         <rect key="frame" x="0.0" y="0.0" width="286" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="286" id="cfl-7H-R79"/>
@@ -456,41 +456,37 @@
                                                 <rect key="frame" x="0.0" y="414" width="375" height="227"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="61" id="vyZ-ZW-ym3">
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="61" id="vyZ-ZW-ym3">
                                                         <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vyZ-ZW-ym3" id="H6f-gF-9tE">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60.666666666666664"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 5000.32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xtg-CC-kvP">
-                                                                    <rect key="frame" x="224" y="15" width="127" height="33.666666666666664"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53L-5x-SH9">
+                                                                    <rect key="frame" x="30" y="15" width="330" height="34"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="127" id="Kkm-uS-Ros"/>
+                                                                        <constraint firstAttribute="height" constant="34" id="IEB-bA-gC4"/>
+                                                                        <constraint firstAttribute="width" constant="330" id="dFp-rL-yeq"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53L-5x-SH9">
-                                                                    <rect key="frame" x="8" y="15" width="208" height="33.666666666666664"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="53L-5x-SH9" firstAttribute="baseline" secondItem="Xtg-CC-kvP" secondAttribute="baseline" id="GCr-vt-6sG"/>
-                                                                <constraint firstAttribute="trailingMargin" secondItem="Xtg-CC-kvP" secondAttribute="trailing" id="XyN-YE-Bbi"/>
-                                                                <constraint firstItem="53L-5x-SH9" firstAttribute="leading" secondItem="H6f-gF-9tE" secondAttribute="leadingMargin" id="czo-Sz-vrO"/>
-                                                                <constraint firstItem="53L-5x-SH9" firstAttribute="top" secondItem="H6f-gF-9tE" secondAttribute="topMargin" constant="7" id="lZt-e1-98J"/>
-                                                                <constraint firstItem="53L-5x-SH9" firstAttribute="firstBaseline" secondItem="Xtg-CC-kvP" secondAttribute="firstBaseline" id="vZj-Qu-aYD"/>
-                                                                <constraint firstItem="Xtg-CC-kvP" firstAttribute="leading" secondItem="53L-5x-SH9" secondAttribute="trailing" constant="8" symbolic="YES" id="vwb-vy-6NZ"/>
-                                                                <constraint firstAttribute="bottomMargin" secondItem="53L-5x-SH9" secondAttribute="bottom" constant="4" id="yZr-Cg-IBp"/>
+                                                                <constraint firstItem="53L-5x-SH9" firstAttribute="top" secondItem="H6f-gF-9tE" secondAttribute="top" constant="15" id="jzZ-4E-Bkf"/>
+                                                                <constraint firstAttribute="bottom" secondItem="53L-5x-SH9" secondAttribute="bottom" constant="11.67" id="mNC-oR-fM2"/>
+                                                                <constraint firstAttribute="trailing" secondItem="53L-5x-SH9" secondAttribute="trailing" constant="15" id="s5f-rJ-M5L"/>
+                                                                <constraint firstItem="53L-5x-SH9" firstAttribute="leading" secondItem="H6f-gF-9tE" secondAttribute="leading" constant="30" id="wgV-k8-yco"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="bKE-Uh-BEj" id="QKO-Eb-Pjs"/>
+                                                    <outlet property="delegate" destination="bKE-Uh-BEj" id="AbU-kr-20R"/>
+                                                </connections>
                                             </tableView>
                                         </subviews>
                                         <constraints>
@@ -537,6 +533,7 @@
                         <outlet property="creditLimitTitle" destination="OUz-fb-1BN" id="SLW-Vg-VDr"/>
                         <outlet property="creditLimitValue" destination="sVt-47-TOJ" id="2pY-GP-pKH"/>
                         <outlet property="scroller" destination="V1K-76-dTf" id="Xyi-jG-xU5"/>
+                        <outlet property="tableView" destination="3aw-rS-6Lp" id="DwW-5M-Ba0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2xg-sv-GvJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -559,6 +556,22 @@
             </objects>
             <point key="canvasLocation" x="2942" y="523"/>
         </scene>
+        <!--Sign Out-->
+        <scene sceneID="CPF-mF-huG">
+            <objects>
+                <viewController id="zld-nv-cuH" customClass="SignOut" customModule="BankingApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KpO-GW-dma">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="y2Q-Fe-dvd"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Sign Out" id="R91-vx-5LT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ohs-8e-ZVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1282" y="-650"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ieS-dc-IzD">
             <objects>
@@ -571,6 +584,7 @@
                     <connections>
                         <segue destination="i6A-ZQ-ITV" kind="relationship" relationship="viewControllers" id="tKw-Q9-RSO"/>
                         <segue destination="DDx-cn-jIB" kind="relationship" relationship="viewControllers" id="6y9-A9-tOK"/>
+                        <segue destination="zld-nv-cuH" kind="relationship" relationship="viewControllers" id="dzW-zF-c0b"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Txv-nK-t0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -608,6 +622,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Credit Card Image" width="500" height="323"/>
         <image name="bankingAppRender" width="180" height="180"/>
     </resources>
 </document>
