@@ -14,3 +14,5 @@ Brad Dodds bradleydodds@csu.fullerton.edu
 Jeffrey Lo jeffylo94@csu.fullerton.edu
 
 Enrique Mendoza emendoza.2@csu.fullerton.edu
+
+Anthony Le anthonyle63@csu.fullerton.edu
