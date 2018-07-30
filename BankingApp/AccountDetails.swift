@@ -10,10 +10,42 @@ import Foundation
 import UIKit
 import Firebase
 import FirebaseDatabase
+import CoreImage
+
 
 struct transaction {
     let description: String!
 }
+
+protocol Bluring {
+    func addBlur(_ alpha: CGFloat)
+}
+
+extension Bluring where Self: UIView {
+    func addBlur(_ alpha: CGFloat = 0.5) {
+        // create effect
+        let effect = UIBlurEffect(style: .regular)
+        let effectView = UIVisualEffectView(effect: effect)
+        
+        // set boundry and alpha
+        effectView.frame = self.bounds
+        effectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        effectView.alpha = alpha
+        
+        self.addSubview(effectView)
+    }
+    
+    func removeBlur(){
+        for subview in self.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+    }
+}
+
+extension UIView: Bluring {}
+
 
 class AccountDetails: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -27,9 +59,9 @@ class AccountDetails: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet var creditLimitTitle: UILabel!
     @IBOutlet var creditLimitValue: UILabel!
     @IBOutlet var creditCardImage: UIImageView!
-    @IBOutlet var cardSwitch: UISwitch?
+    @IBOutlet var cardSwitch: UISwitch!
     @IBOutlet var scroller: UIScrollView!
-    
+    @IBOutlet var disabledLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     var transactionsArray = [transaction]()
@@ -42,6 +74,8 @@ class AccountDetails: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     
     var account: account?
+    var context = CIContext(options: nil)
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,9 +105,21 @@ class AccountDetails: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         
+        disabledLabel.isHidden = true;
         creditCardView.isHidden = true;
         if (account?.name == "Visa Credit"){
             creditCardView.isHidden = false;
+            if (creditDisabled){
+                creditCardImage.addBlur(0.5)
+                disabledLabel.isHidden = false
+                cardSwitch.isOn = false
+            }
+            else{
+                creditCardImage.removeBlur()
+                disabledLabel.isHidden = true
+                cardSwitch.isOn = true
+            }
+            
         }
     }
     
@@ -82,7 +128,23 @@ class AccountDetails: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.balanceValue.text = account?.balance.currency
     }
     
-    
+    //Card Blur Effect
+    @IBAction func onCardToggled(_ sender: UISwitch){
+        if(cardSwitch.isOn){
+            print("card enabled")
+            //            creditCardImage.image = UIImage(named: "Credit Card Image")
+            creditCardImage.removeBlur()
+            disabledLabel.isHidden = true
+            creditDisabled = false;
+            
+        } else{
+            print("card disabled")
+            //            blurEffect()
+            creditCardImage.addBlur(0.5)
+            disabledLabel.isHidden = false
+            creditDisabled = true;
+        }
+    }
     
     
     //TableView Functionality
@@ -130,12 +192,7 @@ class AccountDetails: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         })
         
-   
-        
     }
-    
-    
-    
     
     
 }//END CLASS

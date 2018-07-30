@@ -65,7 +65,7 @@ struct credit {
     static var credit_limit: Double!
 }
 
-
+var creditDisabled: Bool = false
 
 //For populating user data in database
 

@@ -410,11 +410,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Credit Card Image" translatesAutoresizingMaskIntoConstraints="NO" id="j6T-Ue-KZ5">
-                                                        <rect key="frame" x="45" y="45" width="284" height="169"/>
+                                                        <rect key="frame" x="55" y="48" width="264" height="169"/>
                                                     </imageView>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s3t-NJ-U1t">
                                                         <rect key="frame" x="306" y="11" width="51" height="31"/>
                                                         <color key="onTintColor" red="0.36862745099999999" green="0.70196078429999997" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="onCardToggled:" destination="bKE-Uh-BEj" eventType="valueChanged" id="11B-4b-cJJ"/>
+                                                        </connections>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Limit:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OUz-fb-1BN">
                                                         <rect key="frame" x="17" y="225" width="115" height="23"/>
@@ -427,27 +430,35 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DISABLED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAP-27-ApY">
+                                                        <rect key="frame" x="132" y="115" width="111" height="27"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="23"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="sVt-47-TOJ" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="11" id="1mo-vr-IkG"/>
+                                                    <constraint firstItem="sVt-47-TOJ" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="8" id="1mo-vr-IkG"/>
                                                     <constraint firstAttribute="bottom" secondItem="OUz-fb-1BN" secondAttribute="bottom" constant="8" id="2NV-hc-3AL"/>
-                                                    <constraint firstItem="OUz-fb-1BN" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="11" id="2eE-IB-ooV"/>
+                                                    <constraint firstItem="OUz-fb-1BN" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="8" id="2eE-IB-ooV"/>
                                                     <constraint firstItem="OUz-fb-1BN" firstAttribute="baseline" secondItem="sVt-47-TOJ" secondAttribute="firstBaseline" id="3EM-WZ-Mco"/>
                                                     <constraint firstItem="s3t-NJ-U1t" firstAttribute="top" secondItem="2ut-bP-HPQ" secondAttribute="top" constant="11" id="74t-Zq-QVl"/>
                                                     <constraint firstAttribute="height" constant="256" id="8Jc-fn-DHR"/>
-                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="top" secondItem="s3t-NJ-U1t" secondAttribute="bottom" constant="3" id="Ezk-gx-bY1"/>
-                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="top" secondItem="8ao-gA-as5" secondAttribute="bottom" constant="9" id="FSl-Dd-eOV"/>
-                                                    <constraint firstItem="OUz-fb-1BN" firstAttribute="leading" secondItem="j6T-Ue-KZ5" secondAttribute="leading" constant="-28" id="MQn-h4-yxf"/>
-                                                    <constraint firstItem="sVt-47-TOJ" firstAttribute="trailing" secondItem="j6T-Ue-KZ5" secondAttribute="trailing" constant="26" id="O24-U6-0Es"/>
-                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="leading" secondItem="8ao-gA-as5" secondAttribute="leading" constant="28" id="Wrb-as-jTt"/>
+                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="top" secondItem="s3t-NJ-U1t" secondAttribute="bottom" constant="6" id="Ezk-gx-bY1"/>
+                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="top" secondItem="8ao-gA-as5" secondAttribute="bottom" constant="12" id="FSl-Dd-eOV"/>
+                                                    <constraint firstItem="OUz-fb-1BN" firstAttribute="leading" secondItem="j6T-Ue-KZ5" secondAttribute="leading" constant="-38" id="MQn-h4-yxf"/>
+                                                    <constraint firstItem="sVt-47-TOJ" firstAttribute="trailing" secondItem="j6T-Ue-KZ5" secondAttribute="trailing" constant="36" id="O24-U6-0Es"/>
+                                                    <constraint firstItem="VAP-27-ApY" firstAttribute="top" secondItem="8ao-gA-as5" secondAttribute="bottom" constant="79" id="PA0-FQ-hMt"/>
+                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="leading" secondItem="8ao-gA-as5" secondAttribute="leading" constant="38" id="Wrb-as-jTt"/>
                                                     <constraint firstItem="8ao-gA-as5" firstAttribute="top" secondItem="2ut-bP-HPQ" secondAttribute="topMargin" constant="8" id="bhN-Dr-mGb"/>
                                                     <constraint firstItem="8ao-gA-as5" firstAttribute="leading" secondItem="2ut-bP-HPQ" secondAttribute="leadingMargin" constant="9" id="cqN-je-viO"/>
-                                                    <constraint firstItem="OUz-fb-1BN" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="11" id="eqw-Ga-rHJ"/>
+                                                    <constraint firstItem="OUz-fb-1BN" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="8" id="eqw-Ga-rHJ"/>
                                                     <constraint firstItem="sVt-47-TOJ" firstAttribute="leading" secondItem="OUz-fb-1BN" secondAttribute="trailing" constant="23" id="fyn-WH-VRZ"/>
-                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="trailing" secondItem="2ut-bP-HPQ" secondAttribute="trailingMargin" constant="-38" id="g7w-z1-yKB"/>
+                                                    <constraint firstItem="j6T-Ue-KZ5" firstAttribute="trailing" secondItem="2ut-bP-HPQ" secondAttribute="trailingMargin" constant="-48" id="g7w-z1-yKB"/>
                                                     <constraint firstItem="OUz-fb-1BN" firstAttribute="trailing" secondItem="8ao-gA-as5" secondAttribute="trailing" id="jKo-8N-uzb"/>
-                                                    <constraint firstItem="sVt-47-TOJ" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="11" id="pPx-ns-7Gt"/>
+                                                    <constraint firstItem="sVt-47-TOJ" firstAttribute="top" secondItem="j6T-Ue-KZ5" secondAttribute="bottom" constant="8" id="pPx-ns-7Gt"/>
+                                                    <constraint firstItem="VAP-27-ApY" firstAttribute="centerX" secondItem="j6T-Ue-KZ5" secondAttribute="centerX" id="qlb-X2-r8W"/>
                                                     <constraint firstAttribute="trailing" secondItem="s3t-NJ-U1t" secondAttribute="trailing" constant="20" id="szo-z8-3Lm"/>
                                                     <constraint firstAttribute="bottom" secondItem="sVt-47-TOJ" secondAttribute="bottom" constant="10" id="zce-iV-otP"/>
                                                 </constraints>
@@ -532,6 +543,7 @@
                         <outlet property="creditCardView" destination="2ut-bP-HPQ" id="mpl-kR-TCA"/>
                         <outlet property="creditLimitTitle" destination="OUz-fb-1BN" id="SLW-Vg-VDr"/>
                         <outlet property="creditLimitValue" destination="sVt-47-TOJ" id="2pY-GP-pKH"/>
+                        <outlet property="disabledLabel" destination="VAP-27-ApY" id="9CM-s3-1m3"/>
                         <outlet property="scroller" destination="V1K-76-dTf" id="Xyi-jG-xU5"/>
                         <outlet property="tableView" destination="3aw-rS-6Lp" id="DwW-5M-Ba0"/>
                     </connections>
